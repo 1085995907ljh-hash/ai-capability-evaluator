@@ -1,21 +1,21 @@
-# ailevel-judgement
+# ai-capability-evaluator
 
 给候选人提交的 AI 工作材料定级，输出**每个人独立的 HTML 页面**，方便 HR 复制给面试官。
 
-Skill 名称是 `ai-capability-evaluator`，仓库名称是 `ailevel-judgement`。使用标准 [Agent Skills 格式](https://agentskills.io/specification)，可供 Codex、Claude Code 以及支持该格式和独立上下文的 Agent 调用。版本：0.4.0。
+Skill、仓库和安装名称统一为 `ai-capability-evaluator`。使用标准 [Agent Skills 格式](https://agentskills.io/specification)，可供 Codex、Claude Code 以及支持该格式和独立上下文的 Agent 调用。版本：0.4.0。
 
 ## 一条命令安装
 
 使用 Vercel 的 [Skills CLI](https://github.com/vercel-labs/skills)，与其官方 Skill 仓库使用相同的安装方式。在希望使用的项目目录运行：
 
 ```bash
-npx skills add 1085995907ljh-hash/ailevel-judgement
+npx skills add 1085995907ljh-hash/ai-capability-evaluator
 ```
 
 安装器会识别 `ai-capability-evaluator` 并选择对应的 Agent。默认安装到当前项目；加 `-g` 为全局安装。指定 Codex 和 Claude Code、全局安装：
 
 ```bash
-npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator -a codex claude-code -g
+npx skills add 1085995907ljh-hash/ai-capability-evaluator --skill ai-capability-evaluator -a codex claude-code -g
 ```
 
 仅为一个 Agent 安装时，使用 `-a codex` 或 `-a claude-code`。无人值守安装可加 `-y`。安装器处理目录、符号链接与更新记录，无需手动 clone 或复制文件；已有同名手动安装时先备份，再迁移到 CLI 管理。
@@ -82,14 +82,14 @@ Claude Code：/ai-capability-evaluator 评价这些候选人的 AI 材料。
 以下命令不调用模型、不联网，只检验报告结构与渲染：
 
 ```bash
-git clone https://github.com/1085995907ljh-hash/ailevel-judgement.git
-cd ailevel-judgement
+git clone https://github.com/1085995907ljh-hash/ai-capability-evaluator.git
+cd ai-capability-evaluator
 python3 -m unittest discover -s skills/ai-capability-evaluator/tests -v
 python3 skills/ai-capability-evaluator/scripts/report.py validate skills/ai-capability-evaluator/assets/example-report.json
-python3 skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ailevel-demo.html
+python3 skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ai-capability-evaluator-demo.html
 ```
 
-打开 `/tmp/ailevel-demo.html` 查看虚构示例。示例不是实际候选人，也不是一次真实模型评分。截图、HTML、Git 等读取是 Agent 工作流能力，不是上述 Python 验证已经覆盖的端到端能力。
+打开 `/tmp/ai-capability-evaluator-demo.html` 查看虚构示例。示例不是实际候选人，也不是一次真实模型评分。截图、HTML、Git 等读取是 Agent 工作流能力，不是上述 Python 验证已经覆盖的端到端能力。
 
 ## 维护
 

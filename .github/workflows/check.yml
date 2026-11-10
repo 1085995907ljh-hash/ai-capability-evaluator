@@ -18,7 +18,7 @@ jobs:
       - name: Validate and render synthetic report
         run: |
           python skills/ai-capability-evaluator/scripts/report.py validate skills/ai-capability-evaluator/assets/example-report.json
-          python skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ailevel-demo.html
+          python skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ai-capability-evaluator-demo.html
   install:
     runs-on: ubuntu-latest
     steps:

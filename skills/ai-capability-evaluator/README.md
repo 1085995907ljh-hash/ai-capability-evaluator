@@ -5,7 +5,7 @@ Entry: `SKILL.md`. This directory is the complete installable Agent Skill; keep 
 Install with the standard Skills CLI (Node.js 22.20+ and Git):
 
 ```bash
-npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator
+npx skills add 1085995907ljh-hash/ai-capability-evaluator --skill ai-capability-evaluator
 ```
 
 To select Codex and Claude Code globally, append `-a codex claude-code -g`. Manage it with `npx skills list -g`, `npx skills update ai-capability-evaluator -g`, and `npx skills remove ai-capability-evaluator -g`. Omit `-g` for project installations. The npm package is the shared `skills` installer; this Skill is distributed from GitHub.
@@ -27,4 +27,4 @@ python3 <skill>/scripts/report.py render <skill>/assets/example-report.json --ou
 
 owner and review cadence: repository maintainer, per release. output contract: `references/output-contract.md`. rollback boundary: restore the prior installed skill; preserve candidate materials and historical outputs independently. Script execution remains subject to the current task and host permissions; metadata does not grant future permission.
 
-Verification, trust report and missing evidence: `reports/verification.md`. Repository: https://github.com/1085995907ljh-hash/ailevel-judgement
+Verification, trust report and missing evidence: `reports/verification.md`. Repository: https://github.com/1085995907ljh-hash/ai-capability-evaluator

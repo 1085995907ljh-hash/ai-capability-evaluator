@@ -4,7 +4,7 @@ The canonical artifact is a standard Agent Skill directory. `agents/openai.yaml`
 
 ## Standard installation
 
-Use `npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator`. The Skills CLI discovers `skills/ai-capability-evaluator/SKILL.md`, installs supporting files, and manages links for the selected hosts. Select hosts with `-a codex claude-code`; `-g` requests global scope, otherwise installation is project-local. Requires Node.js 22.20+ and Git. Existing manually installed copies should be backed up before migration. The per-host paths below are a manual fallback for hosts unable to use the CLI.
+Use `npx skills add 1085995907ljh-hash/ai-capability-evaluator --skill ai-capability-evaluator`. The Skills CLI discovers `skills/ai-capability-evaluator/SKILL.md`, installs supporting files, and manages links for the selected hosts. Select hosts with `-a codex claude-code`; `-g` requests global scope, otherwise installation is project-local. Requires Node.js 22.20+ and Git. Existing manually installed copies should be backed up before migration. The per-host paths below are a manual fallback for hosts unable to use the CLI.
 
 ## Codex
 
