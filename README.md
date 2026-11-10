@@ -4,38 +4,37 @@
 
 Skill 名称是 `ai-capability-evaluator`，仓库名称是 `ailevel-judgement`。使用标准 [Agent Skills 格式](https://agentskills.io/specification)，可供 Codex、Claude Code 以及支持该格式和独立上下文的 Agent 调用。版本：0.4.0。
 
-## 安装
+## 一条命令安装
 
-需要 Git、Python 3.10+，以及具有文件读取、独立评分上下文和本地输出能力的 Agent。文件盘点脚本使用 POSIX 文件保护，运行于 macOS / Linux；Windows 可用 WSL。图片、PDF、Office 和网页的读取依赖宿主已有工具；本仓库的 Python 脚本不包含 OCR、PDF 解析器或模型。
-
-```bash
-git clone https://github.com/1085995907ljh-hash/ailevel-judgement.git
-cd ailevel-judgement
-```
-
-将 `skills/ai-capability-evaluator` **整个文件夹**复制到对应位置，已有同名安装时先备份再更新：
-
-| Agent | 用户安装位置 | 当前项目安装位置 |
-| --- | --- | --- |
-| Codex | `~/.agents/skills/ai-capability-evaluator/` | `.agents/skills/ai-capability-evaluator/` |
-| Claude Code | `~/.claude/skills/ai-capability-evaluator/` | `.claude/skills/ai-capability-evaluator/` |
-| 其他 Agent | 其 Agent Skills 搜索目录 | 或直接让 Agent 读取完整 `SKILL.md` 并解析相对引用 |
-
-例如，首次安装到 Claude Code：
+使用 Vercel 的 [Skills CLI](https://github.com/vercel-labs/skills)，与其官方 Skill 仓库使用相同的安装方式。在希望使用的项目目录运行：
 
 ```bash
-mkdir -p ~/.claude/skills
-test -e ~/.claude/skills/ai-capability-evaluator || cp -R skills/ai-capability-evaluator ~/.claude/skills/
+npx skills add 1085995907ljh-hash/ailevel-judgement
 ```
 
-首次安装到 Codex：
+安装器会识别 `ai-capability-evaluator` 并选择对应的 Agent。默认安装到当前项目；加 `-g` 为全局安装。指定 Codex 和 Claude Code、全局安装：
 
 ```bash
-mkdir -p ~/.agents/skills
-test -e ~/.agents/skills/ai-capability-evaluator || cp -R skills/ai-capability-evaluator ~/.agents/skills/
+npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator -a codex claude-code -g
 ```
 
-命令遇到已有同名目录会保留原安装。Codex 路径依据[官方说明](https://learn.chatgpt.com/docs/build-skills)；部分旧版或桌面环境仍使用 `~/.codex/skills`，应遵循该宿主实际配置，避免同名重复安装。重新启动宿主会话后调用：
+仅为一个 Agent 安装时，使用 `-a codex` 或 `-a claude-code`。无人值守安装可加 `-y`。安装器处理目录、符号链接与更新记录，无需手动 clone 或复制文件；已有同名手动安装时先备份，再迁移到 CLI 管理。
+
+需要 Node.js 22.20+（运行 npm/npx）、Git 和 Python 3.10+，以及具有文件读取、独立评分上下文和本地输出能力的 Agent。`npx` 下载并运行 npm 上的 `skills` 安装器，Skill 内容从本 GitHub 仓库读取，本项目无需单独发布 npm 包。
+
+管理已安装 Skill：
+
+```bash
+npx skills list -g
+npx skills update ai-capability-evaluator -g
+npx skills remove ai-capability-evaluator -g
+```
+
+项目安装时去掉 `-g`。所有命令选项见 [CLI 官方文档](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)。
+
+## 调用
+
+安装后在 Agent 中调用；如果新 Skill 未出现，重新启动会话：
 
 ```text
 Codex：使用 $ai-capability-evaluator，评价这些候选人的 AI 材料。
@@ -43,7 +42,7 @@ Claude Code：/ai-capability-evaluator 评价这些候选人的 AI 材料。
 其他 Agent：读取 skills/ai-capability-evaluator/SKILL.md，按其中流程评价。
 ```
 
-平台调用与隔离规则见 [平台适配](skills/ai-capability-evaluator/references/platforms.md)。Claude 安装目录依据[官方说明](https://code.claude.com/docs/en/skills)。
+平台调用、隔离规则和不支持 CLI 时的手动安装路径见 [平台适配](skills/ai-capability-evaluator/references/platforms.md)。文件盘点脚本使用 POSIX 文件保护，运行于 macOS / Linux；Windows 可用 WSL。图片、PDF、Office 和网页读取依赖宿主已有工具；本仓库的 Python 脚本不包含 OCR、PDF 解析器或模型。
 
 ## 得到什么
 
@@ -83,6 +82,8 @@ Claude Code：/ai-capability-evaluator 评价这些候选人的 AI 材料。
 以下命令不调用模型、不联网，只检验报告结构与渲染：
 
 ```bash
+git clone https://github.com/1085995907ljh-hash/ailevel-judgement.git
+cd ailevel-judgement
 python3 -m unittest discover -s skills/ai-capability-evaluator/tests -v
 python3 skills/ai-capability-evaluator/scripts/report.py validate skills/ai-capability-evaluator/assets/example-report.json
 python3 skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ailevel-demo.html

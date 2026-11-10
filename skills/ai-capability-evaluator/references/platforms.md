@@ -2,6 +2,10 @@
 
 The canonical artifact is a standard Agent Skill directory. `agents/openai.yaml` is optional Codex interface metadata. `agents/interface.yaml` and the manifest describe portability; they do not install tools or enforce permissions. Other hosts may ignore these metadata files and follow `SKILL.md`.
 
+## Standard installation
+
+Use `npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator`. The Skills CLI discovers `skills/ai-capability-evaluator/SKILL.md`, installs supporting files, and manages links for the selected hosts. Select hosts with `-a codex claude-code`; `-g` requests global scope, otherwise installation is project-local. Requires Node.js 22.20+ and Git. Existing manually installed copies should be backed up before migration. The per-host paths below are a manual fallback for hosts unable to use the CLI.
+
 ## Codex
 
 Install in `~/.agents/skills/ai-capability-evaluator` or a project `.agents/skills/ai-capability-evaluator`. Older/configured hosts may use `~/.codex/skills`; follow the actual host configuration and avoid duplicate names. Resolve supporting paths from the installed skill root, not cwd.
@@ -29,6 +33,7 @@ Without image/PDF/Office tools, mark affected sources unread and disclose the li
 ## References and verification boundary
 
 - Agent Skills format: https://agentskills.io/specification
+- Skills CLI and discovery rules: https://github.com/vercel-labs/skills
 - Codex skill locations: https://learn.chatgpt.com/docs/build-skills
 - Claude skill locations: https://code.claude.com/docs/en/skills
 - Claude subagent context: https://code.claude.com/docs/en/sub-agents

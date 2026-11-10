@@ -2,7 +2,15 @@
 
 Entry: `SKILL.md`. This directory is the complete installable Agent Skill; keep its references, scripts and assets together. Python scripts require Python 3.10+ and the standard library only.
 
-Copy this folder to your Agent's skill directory. Codex: `~/.agents/skills/ai-capability-evaluator` (older/configured hosts may use `~/.codex/skills`); Claude Code: `~/.claude/skills/ai-capability-evaluator`. Avoid duplicate installations. Restart the session after installation. Invoke `$ai-capability-evaluator` in Codex or `/ai-capability-evaluator` in Claude Code. Other hosts can read `SKILL.md` directly. See `references/platforms.md` for fresh-context requirements and display fallback.
+Install with the standard Skills CLI (Node.js 22.20+ and Git):
+
+```bash
+npx skills add 1085995907ljh-hash/ailevel-judgement --skill ai-capability-evaluator
+```
+
+To select Codex and Claude Code globally, append `-a codex claude-code -g`. Manage it with `npx skills list -g`, `npx skills update ai-capability-evaluator -g`, and `npx skills remove ai-capability-evaluator -g`. Omit `-g` for project installations. The npm package is the shared `skills` installer; this Skill is distributed from GitHub.
+
+If the new skill is not visible, restart the session. Invoke `$ai-capability-evaluator` in Codex or `/ai-capability-evaluator` in Claude Code. Other hosts can read `SKILL.md` directly. See `references/platforms.md` for manual fallback, fresh-context requirements and display fallback.
 
 The workflow processes one candidate at a time, always assigns one of five levels, and creates a separate two-section HTML report. There is no independent audit. Inaccessible or insufficient material yields an explicitly provisional Assisted grade, low confidence and disclosed gaps, never invented evidence. Fresh scoring infrastructure must actually be available.
 

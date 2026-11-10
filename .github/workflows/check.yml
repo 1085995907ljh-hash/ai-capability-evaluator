@@ -19,3 +19,24 @@ jobs:
         run: |
           python skills/ai-capability-evaluator/scripts/report.py validate skills/ai-capability-evaluator/assets/example-report.json
           python skills/ai-capability-evaluator/scripts/report.py render skills/ai-capability-evaluator/assets/example-report.json --output /tmp/ailevel-demo.html
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install through Skills CLI for Codex and Claude Code
+        env:
+          DISABLE_TELEMETRY: '1'
+        run: |
+          install_test_dir=$(mktemp -d)
+          cd "$install_test_dir"
+          npx --yes skills@1.7.6 add "$GITHUB_WORKSPACE" --skill ai-capability-evaluator --agent codex claude-code --yes
+          test -f .agents/skills/ai-capability-evaluator/SKILL.md
+          test -f .claude/skills/ai-capability-evaluator/SKILL.md
+          python .agents/skills/ai-capability-evaluator/scripts/report.py validate .agents/skills/ai-capability-evaluator/assets/example-report.json
+          python .claude/skills/ai-capability-evaluator/scripts/report.py render .claude/skills/ai-capability-evaluator/assets/example-report.json --output "$install_test_dir/demo.html"
