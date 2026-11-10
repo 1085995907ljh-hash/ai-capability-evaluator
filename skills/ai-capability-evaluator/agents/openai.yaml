@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI 候选人能力评审"
+  short_description: "多格式材料逐人评级，生成一人一页的 HR HTML 报告"
+  default_prompt: "Use $ai-capability-evaluator: grade AI work in a fresh context, no audit, one HTML page per person."

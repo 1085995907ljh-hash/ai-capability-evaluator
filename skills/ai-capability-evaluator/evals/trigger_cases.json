@@ -1,0 +1,20 @@
+{
+  "recommended_threshold": 0.55,
+  "should_trigger": [
+    "请对候选人 AI 项目材料做等级评价，不需要审核。",
+    "根据这份 PDF 给候选人的 AI 能力评级，输出 HR HTML 报告。",
+    "Evaluate this candidate's submitted AI work using the five-level rubric.",
+    "候选人提交 Git 仓库和截图，做 AI 能力评审。",
+    "给每位候选人 AI 能力定级，做成一人一页的 HTML。"
+  ],
+  "should_not_trigger": [
+    "帮我写一个 AI 自动化项目。",
+    "把这份 PDF 转成 Word，不需要评价候选人。",
+    "今天的天气怎样？"
+  ],
+  "near_neighbor": [
+    "只帮我美化简历排版，不要能力评级。",
+    "根据学校和年龄排列候选人录用顺序。",
+    "审查代码是否有 SQL 注入漏洞。"
+  ]
+}

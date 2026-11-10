@@ -1,0 +1,21 @@
+interface:
+  display_name: "AI 候选人能力评审"
+  short_description: "读取候选人材料，逐人评级、一人一页，输出可复制的 HTML 报告"
+  default_prompt: "Use $ai-capability-evaluator: five-level grading, fresh scorers, one HTML per person."
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets: ["openai", "claude", "generic"]
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "bash"
+  trust:
+    source_tier: "remote"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "deny"
+  degradation:
+    openai: "Fresh scorer required; file link if no panel. See references/platforms.md."
+    claude: "New non-fork scorer, no memory; HTML link. See references/platforms.md."
+    generic: "Fresh context + readers + Python required. See references/platforms.md."

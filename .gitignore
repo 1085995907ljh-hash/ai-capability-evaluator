@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+outputs/
+candidate-data/
+private/
+skills/*/dist/
+skills/*/reports/*
+!skills/*/reports/skill-ir.json
+!skills/*/reports/verification.md
+!skills/*/reports/output_quality_scorecard.md

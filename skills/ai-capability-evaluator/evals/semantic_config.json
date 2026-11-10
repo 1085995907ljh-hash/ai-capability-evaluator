@@ -1,0 +1,10 @@
+{
+  "threshold": 0.55,
+  "fallback_positive_concepts": ["candidate_evaluation"],
+  "positive_concepts": {
+    "candidate_evaluation": {"weight": 1.0, "phrases": ["候选人 AI", "候选人的 AI", "AI 能力评审", "候选人提交", "candidate's submitted AI", "candidate AI capability"]}
+  },
+  "negative_concepts": {
+    "non_evaluation": {"weight": 1.0, "exclusive": true, "phrases": ["不需要评价候选人", "不要能力评级", "录用顺序", "SQL 注入", "天气", "帮我写一个"]}
+  }
+}

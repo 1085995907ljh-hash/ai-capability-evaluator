@@ -1,0 +1,36 @@
+{
+  "name": "ai-capability-evaluator",
+  "version": "0.4.0",
+  "description": "Mandatory material-based AI grades with a fresh scorer and a separate HTML page per candidate; no audit",
+  "maturity": "production-candidate",
+  "updated_at": "2026-11-10",
+  "status": "experimental",
+  "maturity_tier": "library",
+  "lifecycle_stage": "library",
+  "skill_archetype": "library",
+  "target_platforms": [
+    "openai", "claude", "generic"
+  ],
+  "skill_ir_source": "reports/skill-ir.json",
+  "context_budget_tier": "production",
+  "owner": "1085995907ljh-hash / repository maintainer",
+  "review_cadence": "per-release",
+  "output_contract": "references/output-contract.md",
+  "rollback_boundary": "Restore the backed-up previous Skill; preserve candidate run outputs separately",
+  "input_files": "file-backed fixture: assets/example-report.json and evals/cases/",
+  "missing_evidence": [
+    "Human rubric calibration",
+    "Cross-format Git/Office end-to-end runs",
+    "Blind human baseline comparison",
+    "Claude and generic host model-driven end-to-end validation"
+  ],
+  "factory_components": [
+    "references",
+    "scripts",
+    "assets",
+    "evals",
+    "tests",
+    "reports",
+    "security"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-11-10",
+  "capabilities": {
+    "file_write": {
+      "decision": "approved",
+      "reviewer": "Codex automated source review during release preparation; not independent human approval",
+      "expires_at": "2026-12-10",
+      "scope": "The two bundled scripts may write explicitly requested local inventory and report outputs only within a current user task. This source-review metadata is not user consent, installation authority or an operating-system permission grant.",
+      "reason": "Source inspection and regression tests confirm explicit output paths, input overwrite guards, local-only processing, escaped HTML and no candidate-code execution. Future use remains governed by the invoking user task and actual host permissions; expiration requests maintainer re-review only.",
+      "evidence": ["reports/verification.md", "tests/test_inventory.py", "tests/test_report.py", "references/platforms.md"],
+      "target_enforcement": {
+        "openai": "Host tools and current task scope enforce writes. Metadata cannot grant permission or claim a native sandbox; scripts use explicit output paths.",
+        "claude": "Claude host tool permissions and current task scope enforce writes. This metadata does not configure allowedTools or bypass prompts.",
+        "generic": "The invoking host must enforce write scope. Metadata alone cannot restrict filesystem access; review the scripts before execution.",
+        "vscode": "Not a declared adapter target. No runtime grant; editor workspace trust and actual tool permissions remain authoritative."
+      }
+    }
+  }
+}
